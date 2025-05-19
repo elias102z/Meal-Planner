@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{#
+<div class="newnav">
+
+    <div>
+        <a href="#home" class="newlogo">Logo</a>
+    </div>
+    <div class="topnav">
+        <div id="myLinks">
+            <a href="{{path('app_day_index')}}" class="btn btn-light">Meal Planner</a>
+            <a href="{{path('app_day_index')}}" class="btn btn-light">Meal Planner</a>
+            <a href="{{path('app_day_index')}}" class="btn btn-light">Meal Planner</a>
+        </div>
+
+        <a href="javascript:void(0);" class="burgerIcon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</div>
+#}
+<nav>
+    <div id="logo" class="hw">
+        <a href="{{path('app_home')}}">
+            <img src="{{ asset('img/logo_frei.png')}}" alt="logo">
+            {# <p>Meals</p>
+            <p>from</p>
+            <p>Scratch</p> #}
+        </a>
+    </div>
+
+
+    <div class="main-nav">
+        <ul>
+            <li>
+                <a href="{{path('app_recipes_index')}}" class="btn btn-light">Recipes</a>
+            </li>
+
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <li>
+                <a href="{{path('app_day_index')}}" class="btn btn-light">Meal Planner</a>
+            </li>
+            {% endif %}
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <li>
+                <a href="{{path('app_shopping_list_index')}}" class="btn btn-light">Shopping List</a>
+            </li>
+            {% endif %}
+
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <li>
+                <a href="{{path('app_user_dashboard')}}" class="btn btn-light">Your Recipes</a>
+            </li>
+            {% endif %}
+
+            {% if is_granted("ROLE_ADMIN") %}
+            <li>
+                <a href="{{path('app_admin_dashboard')}}" class="btn btn-light">Admin Dashboard</a>
+            </li>
+            {% endif %}
+
+            {% if not is_granted("IS_AUTHENTICATED_FULLY") %}
+            <li>
+                <a href="{{path('app_login')}}" class="btn btn-light">sign in</a>
+            </li>
+            <li>
+                <a href="{{path('app_register')}}" class="btn btn-light">sign up</a>
+            </li>
+            {% endif %}
+
+            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+            <li>
+                <a href="{{path('app_logout')}}" class="btn btn-light">sign out</a>
+            </li>
+            {% endif %}
+
+
+        </ul>
+    </div>
+
+    {# SCRIPT #}
+
+    <script>
+        function myFunction() {
+            var x = document.getElementById("myLinks");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+</nav>

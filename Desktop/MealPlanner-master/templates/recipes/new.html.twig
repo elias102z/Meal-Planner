@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+<div class="form-container">
+
+
+    <h2 class="hw">Create new Recipes</h2>
+
+
+    {# {{ include('recipes/_form.html.twig') }} #}
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.image) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.instructions) }}
+    <div class="form-row">
+        {{ form_row(form.time_minutes) }}
+        {{ form_row(form.calories_cat) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.difficulty) }}
+        {{ form_row(form.rating) }}
+        {{ form_row(form.type) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.status) }}
+        {{ form_row(form.category) }}
+        {{ form_row(form.allergen) }}
+    </div>
+
+
+
+    <div class="form-box">
+        <h5 class="mb-05">Ingredients</h5>
+        <ul class="ingredients" data-index="{{ form.ingredients|length > 0 ? form.ingredients|last.vars.name + 1 : 0 }}"
+            data-prototype="{{ form_widget(form.ingredients.vars.prototype)|e('html_attr') }}">
+        </ul>
+
+        <button type="button" class="add_item_link btn-small" data-collection-holder-class="ingredients">Add an
+            Ingredient</button>
+
+    </div>
+    <button class="btn btn-green">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+
+    <br>
+    <a href="{{ path('app_user_dashboard') }}" class="btn btn-grey">back to list</a>
+</div>
+
+{# SCRIPTS #}
+<script>
+    document
+        .querySelectorAll('.add_item_link')
+        .forEach(btn => {
+
+            btn.addEventListener("click", addFormToCollection)
+        });
+
+    function addFormToCollection(e) {
+        const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);
+
+        const item = document.createElement('li');
+
+        item.innerHTML = collectionHolder
+            .dataset
+            .prototype
+            .replace(
+                /__name__/g,
+                collectionHolder.dataset.index
+            );
+
+        collectionHolder.appendChild(item);
+
+        collectionHolder.dataset.index++;
+
+        addIngredientFormDeleteLink(item);
+    };
+
+    function addIngredientFormDeleteLink(item) {
+        const removeFormButton = document.createElement('button');
+        removeFormButton.innerText = 'Delete this ingredient';
+        removeFormButton.classList.add("btn-small");
+        removeFormButton.classList.add("mb-05");
+
+        item.append(removeFormButton);
+
+        removeFormButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            // remove the li for the tag form
+            item.remove();
+        });
+    }
+
+</script>
+{% endblock %}

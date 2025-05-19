@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+
+{# MENU #}
+<div class="user-menu">
+    <a href="{{ path('app_recipes_new') }}" class="btn btn-green">Create new</a>
+</div>
+
+{# CARDS #}
+<div class="cards-container">
+    {% for recipe in recipes %}
+    {# <a href="{{ path('app_recipes_show', {'id': recipe.id}) }}" class="card"> </a> #}
+    <div href="{{ path('app_recipes_show', {'id': recipe.id}) }}" class="card">
+        <img src="{{ asset('pictures/' ~ recipe.image) }}" alt="Recipe Image">
+        <h5 class="title hw">{{ recipe.title }}</h5>
+        <div class="rating">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+        </div>
+        {# <div href="{{ path('app_recipes_edit', {'id': recipe.id}) }}" class="add-symobol"><i
+                class="fa-solid fa-plus"></i>
+        </div> #}
+        <div class="user-card-buttons">
+            <a href="{{ path('app_recipes_show', {'id': recipe.id}) }}" class="btn btn-green">show</a>
+            <a href="{{ path('app_recipes_edit', {'id': recipe.id}) }}" class="btn btn-green">edit</a>
+        </div>
+    </div>
+
+    {% else %}
+
+    <h3 class="hw">create your first Recipe</h3>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

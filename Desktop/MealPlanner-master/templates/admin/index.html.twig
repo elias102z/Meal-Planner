@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+<h1>User index</h1>
+
+<div class="admin-cards-container">
+    <div class="cards-container">
+        {% for user in users %}
+        <div class="card">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ user.email }}</h5>
+
+                <a href="{{ path('app_admin_edit', {'id': user.id}) }}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="card">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center"> {# Flexbox for
+                centering #}
+                <h5 class="card-title">No records found</h5>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+<h1>Recipes Index</h1>
+<div class="admin-cards-container">
+
+
+    {% for recipe in recipes %}
+    <div class="card">
+        <img src="{{ asset('pictures/' ~ recipe.image) }}" alt="{{ recipe.title }} Image" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{ recipe.title }}</h5>
+
+
+            <a href="{{ path('app_recipes_edit', {'id': recipe.id}) }}" class="btn btn-primary">Edit</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">No recipes found</h5>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+</tbody>
+</table>
+{% endblock %}

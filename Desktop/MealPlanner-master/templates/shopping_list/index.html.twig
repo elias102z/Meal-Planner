@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+<div class="shopping-list-wrapper">
+    <h2 class="hw">what you need:</h2>
+    <div class="shopping-list">
+        {% for ingredient in ingredients %}
+        <div class="item">
+            <div class="circle"></div>
+            {{ingredient.info}}
+        </div>
+        {% else %}
+        <div class="item">
+            <div class="circle"></div>
+            is to add something to your meal planner
+        </div>
+        {% endfor %}
+        <div>
+            <img src="{{ asset('img/tomato.png')}}" alt="image of a carrot" class="flavourImg">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

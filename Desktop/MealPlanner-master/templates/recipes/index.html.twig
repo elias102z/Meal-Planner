@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+<div class="recipe-wrapper">
+    {# <div class="statusIndicator">
+        <h2 class="hw f-off-white ">Add Breakfast</h2>
+        <button class="btn btn-red">X</button>
+    </div> #}
+
+
+    <div class="recipe-main">
+
+        {# SEARCH SECTION #}
+        <div class="search-section">
+            <h3 class="hw f-off-white">What would you like to cook today</h3>
+            <div class="search-area">
+                {{ form_start(form)}}
+                <div class="search-row">
+                    {{ form_row(form.searchBtn) }}
+                    {{ form_row(form.searchPhrase) }}
+                </div>
+                {{ form_end(form)}}
+            </div>
+            <div>
+                {% if isSearched == 1 %}
+                <a href="{{ path('app_recipes_index') }}" class="btn btn-red-light">Go back to all meals</a>
+                {% endif %}
+            </div>
+            <div>
+                <img src="{{ asset('img/shrooms.png')}}" alt="image of a carrot" class="flavourImg">
+            </div>
+            {# <div class="tags-area">
+                <h4 class="hw f-off-white">filter by tags</h4>
+
+            </div> #}
+        </div>
+
+        {# CARDS SECTION #}
+
+        <div class="cards-container">
+            {% for recipe in recipes %}
+            <a href="{{ path('app_recipes_show', {'id': recipe.id}) }}" class="card">
+                <img src="{{ asset('pictures/' ~ recipe.image) }}" alt="Recipe Image">
+                <h5 class="title hw">{{ recipe.title }}</h5>
+                <div class="rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                {# <div href="{{ path('app_recipes_edit', {'id': recipe.id}) }}" class="add-symobol"><i
+                        class="fa-solid fa-plus"></i></div> #}
+            </a>
+            {% else %}
+
+            <h3>no records found</h3>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

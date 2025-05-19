@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Meals from Scratch{% endblock %}
+
+{% block body %}
+
+
+<div class="day-wrapper">
+    {% for day in days %}
+    <div class="day-card">
+
+        <h3 class="hw">Your Meal Plan</h3>
+
+        <div class="recipes-area">
+            <div class="day-slot">
+                <h5 class="h hw">for Breakfast</h5>
+
+                {% if day.breakfast == null %}
+
+                <a href="{{path('app_recipes_index')}}" class="btn btn-blue push">Search New Meal</a>
+                {% else %}
+
+                <a href="{{ path('app_recipes_show', {'id': day.breakfast.id}) }}" class="btn btn-blue push">
+                    {{ day.breakfast.title }}
+                    {# <h5 class="recipe hw">{{ day.breakfast.title }}</h5> #}
+                </a>
+                {{ form_start(form_removeBreakfast)}}
+                {{ form_widget(form_removeBreakfast)}}
+                <button type="submit" value="remove" class="btn btn-red">remove</button>
+                {{ form_end(form_removeBreakfast)}}
+                {% endif %}
+            </div>
+
+            <div class="day-slot">
+                <h5 class="h  hw">for Lunch</h5>
+
+                {% if day.lunch == null %}
+
+                <a href="{{path('app_recipes_index')}}" class="btn btn-blue push">Search New Meal</a>
+                {% else %}
+
+                <a href="{{ path('app_recipes_show', {'id': day.lunch.id}) }}" class="btn btn-blue push">
+                    {{ day.lunch.title }}
+                    {# <h5 class="recipe hw">{{ day.lunch.title }}</h5> #}
+                </a>
+                {{ form_start(form_removeLunch)}}
+                {{ form_widget(form_removeLunch)}}
+                <button type="submit" value="remove" class="btn btn-red">remove</button>
+                {{ form_end(form_removeLunch)}}
+                {% endif %}
+            </div>
+
+            <div class="day-slot">
+                <h5 class="h  hw">for Dinner</h5>
+                {% if day.dinner == null %}
+                <a href="{{path('app_recipes_index')}}" class="btn btn-blue push">Search New Meal</a>
+                {% else %}
+
+                <a href="{{ path('app_recipes_show', {'id': day.dinner.id}) }}" class="btn btn-blue push">
+                    {{ day.dinner.title }}
+                    {# <h5 class="recipe hw">{{ day.dinner.title }}</h5> #}
+                </a>
+                {{ form_start(form_removeDinner)}}
+                {{ form_widget(form_removeDinner)}}
+                <button type="submit" value="remove" class="btn btn-red">remove</button>
+                {{ form_end(form_removeDinner)}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="cosmetics">
+            <img src="{{ asset('img/sellerie.png')}}" alt="image of a carrot" class="cosmetic-img">
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{#
+<h1>Day index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for day in days %}
+        <tr>
+            <td>{{ day.id }}</td>
+            <td>
+                <a href="{{ path('app_day_show', {'id': day.id}) }}">show</a>
+                <a href="{{ path('app_day_edit', {'id': day.id}) }}">edit</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">no records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{{ path('app_day_new') }}">Create new</a> #}
+{% endblock %}
