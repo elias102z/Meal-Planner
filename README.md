@@ -61,10 +61,8 @@ cd Meal-Planner
 
 Hier noch eine kurze Vorschau meines Projekts:
 
-![Screenshot 1](https://github.com/elias102z/Meal-Planner/raw/main/Screenshot%202025-05-21%20112215.png)
+![Screenshot 1](https://github.com/elias102z/Meal-Planner/raw/main/Meals%20from%20scratch%20.png)
 
-![Screenshot 2](https://github.com/elias102z/Meal-Planner/raw/main/Meals%20from%20scratcn%202.png)
+![Screenshot 2](https://github.com/elias102z/Meal-Planner/raw/main/Meals%20from%20scratch%202%20.png)
 
-
-
-
+![Screenshot 3](https://github.com/elias102z/Meal-Planner/raw/main/Screenshot%202025-05-21%20112215.png)
