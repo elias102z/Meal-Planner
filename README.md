@@ -32,19 +32,6 @@ Dieses Projekt wurde als **Gruppenarbeit** im Rahmen eines 6-monatigen Full-Stac
 - [Symfony CLI](https://symfony.com/download)
 - [XAMPP](https://www.apachefriends.org/index.html) oder lokaler MySQL-Server
 - Git
-
----
-
-### 🚀 Projekt installieren
-
-
-# 1. Repository klonen
-git clone https://github.com/elias102z/Meal-Planner.git
-cd Meal-Planner
-
-
-**Teamprojekt:
-
 check env.
 DATABASE_URL="mysql://root:@127.0.0.1:3306/meal_planner" 
 
@@ -58,6 +45,25 @@ composer i für Builden
 zum starten der Website symfony server:start
 
 Zur sicherheit auch php bin/console cache:clear ausführen, sodass website richtig dargestellt wird
+
+---
+
+### 🚀 Projekt installieren
+
+
+# 1. Repository klonen
+git clone https://github.com/elias102z/Meal-Planner.git
+cd Meal-Planner
+
+
+
+## 🔍 Vorschau
+
+Hier noch eine kurze Vorschau meines Projekts:
+
+![Screenshot 1](https://github.com/elias102z/Meal-Planner/raw/main/Screenshot%202025-05-21%20112215.png)
+
+![Screenshot 2](https://github.com/elias102z/Meal-Planner/raw/main/Meals%20from%20scratcn%202.png)
 
 
 
