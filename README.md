@@ -48,7 +48,17 @@ cd Meal-Planner
 check env.
 DATABASE_URL="mysql://root:@127.0.0.1:3306/meal_planner" 
 
+Datenbank in Xampp importieren
 
-In php ini gehen und bei ;extension my sql das ; weggeben
-composer i 
+meist heißt die PHP datei php. developer zuvor, einfach umbenennen.
+In php ini gehen und bei ;extension my sql das ; weggeben.
+
+composer i für Builden
+
 zum starten der Website symfony server:start
+
+Zur sicherheit auch php bin/console cache:clear ausführen, sodass website richtig dargestellt wird
+
+
+
+
